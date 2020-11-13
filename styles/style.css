@@ -4,61 +4,270 @@
           box-sizing: border-box;
 }
 
-* {
-  border: 1px solid red;
+
+:root {
+  --alt-gray: rgb(228, 228, 228, .5);
+  --alt-black: rgb(19, 19, 19, .5);
+  --alt-red: #343500;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #555;
 }
 
 img {
-  width: 15%; 
+  width: 100%; 
 }
+
+/* Grid container */
+nav {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  display: grid;
+  grid-template-areas: "logo icons";
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: 80px;
+  border-bottom: .2px solid rgb(226, 224, 224);
+}
+
+/* Grid items */
+
+.logo-cntnr {
+  display: flex;
+  align-items: center;
+  grid-area: logo;
+  padding-left: 5px;
+  width: 100px;
+  background-color: #000;
+}
+
+.top-nav {
+  grid-area: top-nav;
+  height: 27px;
+  color: hsla(0,0%,100%,.6);
+  font-size: 13px;
+  background-color: #000;
+}
+
+.article-nav {
+  grid-area: article-nav;
+  height: 50px;
+  color: #aaa;
+  font-size: 13.5px;
+  background-color: #fff;
+}
+
+.nav-icons {
+  display: flex;
+  justify-self: end;
+  align-items: center;
+  grid-area: icons;
+  background-color: #fff;
+}
+
+/* More navbar styling */
 
 .top-nav,
 .article-nav {
-  display: flex;
-  justify-content: space-between;
-}
-
-nav div {
-  display: flex;
+  display: none;
 }
 
 nav li {
   list-style-type: none;
 }
 
-.top-stories {
+.top-nav li {
+  padding: 7px;
+}
+
+.news {
+  color: #fff;
+}
+
+.article-nav li {
+  padding: 7px;
+}
+
+nav i {
+  padding: 0 7px;
+}
+
+/* Navbar media queries */
+
+@media (min-width: 768px) {
+  nav {
+    grid-template-columns: auto 2fr 1fr;
+    grid-template-areas:
+      "logo top-nav top-nav"
+      "logo article-nav icons";
+  }
   
-}
-
-@media (min-width: 770px) {
-  .top-stories {
+  .top-nav {
     display: flex;
+    justify-content: space-between;
   }
 
-  .flex-item-left {
-    flex: 1;
+  .top-nav div,
+  .article-nav {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+  }
+
+  .fa-bars {
+    display: none !important;
   }
 }
 
-.latest-news,
-.funding,
-.section-cntnr,
-.deals {
+@media (min-width: 1024px) {
+  nav {
+    grid-template-areas: 
+    "top-nav top-nav"
+    "article-nav icons" min-content / 3fr 1fr;
+  }
+  
+  .logo-cntnr {
+    display: none;
+  }
+}
+
+main {
+  margin: 12px;
+  margin-top: 100px;
+}
+
+.logo { width: 40px;}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #f42;
+}
+
+h2:hover {
+  color: #000;
+}
+
+h3 {
+  font-weight: 700;
+}
+
+.top-stories {
   display: grid;
   grid-gap: 10px;
+}
+
+.top-story {
+  display: grid;
+  align-content: end;
+  min-height: 30vh;
+  padding: 8px;
+  color: #fff;
+  background-position: center;
+  background-size: cover;
+}
+
+.top-stories h3 {
+  margin-bottom: .25em;
+  font-size: 22px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.top-stories p {
+  font-size: 12px;
+}
+
+.top-story-left {
+  background-image: linear-gradient(to bottom, var(--alt-gray), var(--alt-black)), url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/china-market-consumers-gq-796x417.png");
+}
+
+.logo-and-date {
+  display: none;
+}
+
+.top-story-top {
+  background-image: linear-gradient(to bottom, var(--alt-gray), var(--alt-black)), url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/netflix-feat-796x417.png");
+}
+
+.top-story-btm {
+  background-image: linear-gradient(to bottom, var(--alt-gray), var(--alt-black)), url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/Untitled-design-2020-11-11T104744.768-796x417.png");
+}
+
+@media (min-width: 768px) {
+  .top-stories {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .top-story-left h3 {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .top-story {
+    min-height: 16.5rem;
+  }
+
+  .logo-and-date {
+    display: block;
+  }
+}
+
+.latest-news figure,
+.deals figure {
+  display: flex;
+  margin: 10px 0;
 }
 
 .latest-news,
 .deals {
   grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  grid-gap: 10px;
+  margin: 20px 0;
 }
 
-.latest-news h2 {
-  grid-column: 1 / -1;
+.latest-news img,
+.deals img {
+  width: 75px;
+}
+
+@media (min-width: 768px) {
+  .latest-news, 
+  .latest-news figure,
+  .deals,
+  .deals figure {
+    display: grid;
+    grid-gap: 10px;
+    justify-content: space-between;
+  }
+
+  .latest-news h2 {
+    grid-column: 1 / -1;
+  }
+
+  .latest-news img,
+  .deals img {
+    width: 100%;
+  }
+}
+
+.funding,
+.section-cntnr {
+  display: grid;
+  grid-gap: 10px;
 }
 
 .funding {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.funding-hdr {
+  grid-column: 1 / -1;
 }
 
 .section-cntnr {
@@ -66,7 +275,12 @@ nav li {
 }
 
 .deals-heading {
-  grid-column: 1 / -1;
   display: flex;
   justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .deals-heading {
+    grid-column: 1 / -1;
+  }
 }
