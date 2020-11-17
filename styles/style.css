@@ -28,7 +28,8 @@ nav {
   top: 0;
   z-index: 10;
   width: 100%;
-  display: gridgrid-template-areas: "logo icons";
+  display: grid;
+  grid-template-areas: "logo icons";
   justify-content: space-between;
   align-content: center;
   margin-bottom: 80px;
@@ -427,7 +428,7 @@ p {
 
 .topic-grid {
   display: grid;
-  grid-template-rows: 3fr 1fr repeat(5, auto);
+  grid-template-rows: 3fr 1fr auto;
 }
 
 .section1 {
@@ -475,7 +476,82 @@ p {
   object-fit: cover;
 }
 
+.bullet-list li {
+  padding: 10px 0 10px 12px;
+  list-style: none;
+  font-size: 13px;
+  border-bottom: 1px solid rgb(85, 85, 85, .2);
+}
+
+.bullet-list li::before {
+  content: "\2022"; 
+  color: #f42;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
 .deals-heading {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.deals-heading p {
+  color: #f42;
+  font-size: 15px;
+}
+
+footer {
+  color: #aaa;
+}
+
+.ftr-top {
+  background-color: #131313;
+}
+
+.ftr-top ul {
+  display: flex;
+  justify-content: center;
+}
+
+.ftr-top li {
+  padding: 8px;
+  font-size: 11px;
+}
+
+.ftr-icons {
+  padding-top: 30px;
+}
+
+.ftr-top i {
+  padding: 9px;
+  height: 18px;
+  width: 18px;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  background-color: #333;
+  border-radius: 50%;
+}
+
+.ftr-links {
+  padding: 20px 0;
+}
+
+.ftr-btm {
+  padding: 40px 0;
+  font-size: 12px;
+  text-align: center;
+  background-color: #000;
+}
+
+.ftr-btm img {
+  width: 37px;
+}
+
+.bold {
+  color: #fff;
+  font-weight: 700;
 }
