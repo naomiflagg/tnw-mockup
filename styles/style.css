@@ -1,25 +1,55 @@
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 
 :root {
-  --alt-gray: rgb(228, 228, 228, .2);
+  --alt-gray: rgb(228, 228, 228, 0.2);
 }
+
+/* Shared overall styles */
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   color: #555;
 }
 
+img,
+p,
+h1,
+h2,
+h3,
+li,
+i {
+  cursor: pointer;
+}
+
 img {
-  width: 100%; 
+  width: 100%;
 }
 
 .fas {
   padding: 0 7px;
+}
+
+/* Shared hover styles */
+
+.article-nav li:hover,
+h2:hover,
+.funding-hdr p:hover,
+.funding-deets p:hover,
+.bullet-list li:hover {
+  color: #000;
+}
+
+.topic-section h3:hover {
+  text-decoration: underline;
+}
+
+.ftr-links li:hover,
+.top-nav li:hover {
+  color: #fff;
 }
 
 /* Grid container */
@@ -33,7 +63,7 @@ nav {
   justify-content: space-between;
   align-content: center;
   margin-bottom: 80px;
-  border-bottom: .2px solid rgb(226, 224, 224);
+  border-bottom: 0.2px solid rgb(226, 224, 224);
   background-color: #fff;
 }
 
@@ -51,7 +81,7 @@ nav {
 .top-nav {
   grid-area: top-nav;
   height: 27px;
-  color: hsla(0,0%,100%,.6);
+  color: hsla(0, 0%, 100%, 0.6);
   font-size: 13px;
   background-color: #000;
 }
@@ -104,7 +134,7 @@ nav li {
       "logo top-nav top-nav"
       "logo article-nav icons";
   }
-  
+
   .top-nav {
     display: flex;
     justify-content: space-between;
@@ -124,11 +154,11 @@ nav li {
 
 @media (min-width: 1024px) {
   nav {
-    grid-template-areas: 
-    "top-nav top-nav"
-    "article-nav icons" min-content / 3fr 1fr;
+    grid-template-areas:
+      "top-nav top-nav"
+      "article-nav icons" min-content / 3fr 1fr;
   }
-  
+
   .logo-cntnr {
     display: none;
   }
@@ -141,17 +171,13 @@ main {
 
 h1 {
   width: 50%;
-}  
+}
 
 h2 {
   margin: 10px 0;
   font-size: 28px;
   font-weight: 700;
   color: #f42;
-}
-
-h2:hover {
-  color: #000;
 }
 
 h3 {
@@ -163,15 +189,19 @@ p {
   line-height: 1.5;
 }
 
+/* Top stories grid container */
 .top-stories,
 .section-cntnr {
   display: grid;
   grid-gap: 10px;
 }
 
+/* Top story grid item */
 .top-story {
   min-height: 30vh;
 }
+
+/* Text over image styles for stories throughout page */
 
 .img-txt-container {
   display: grid;
@@ -184,7 +214,7 @@ p {
 
 .img-txt-container h3 {
   z-index: 2;
-  margin-bottom: .25em;
+  margin-bottom: 0.25em;
   font-size: 22px;
   line-height: 1;
 }
@@ -198,9 +228,12 @@ p {
   padding: 0 3px 0 5px;
 }
 
+/* Featured story on left */
+
 .top-story-left {
   position: relative;
-  background-image: linear-gradient(to bottom, var(--alt-gray), #000), url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/china-market-consumers-gq-796x417.png");
+  background-image: linear-gradient(to bottom, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/china-market-consumers-gq-796x417.png");
 }
 
 .gradient {
@@ -208,8 +241,15 @@ p {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to right bottom, rgba(248, 62, 78, 0.45) 20%, rgba(255, 67, 10, 0.45) 60%, transparent);
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(248, 62, 78, 0.45) 20%,
+    rgba(255, 67, 10, 0.45) 60%,
+    transparent
+  );
 }
+
+/* Main logo and date for widescreen view */
 
 .logo-and-date {
   display: none;
@@ -223,13 +263,19 @@ p {
   font-size: 14px;
 }
 
+/* Featured story on top right */
 .top-story-top {
-  background-image: linear-gradient(to bottom, var(--alt-gray), #000), url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/netflix-feat-796x417.png");
+  background-image: linear-gradient(to bottom, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/netflix-feat-796x417.png");
 }
 
+/* Featured story on bottom right */
 .top-story-btm {
-  background-image: linear-gradient(to bottom, var(--alt-gray), #000), url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/Untitled-design-2020-11-11T104744.768-796x417.png");
+  background-image: linear-gradient(to bottom, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/Untitled-design-2020-11-11T104744.768-796x417.png");
 }
+
+/* Media queries for top stories and main logo */
 
 @media (min-width: 768px) {
   .top-stories {
@@ -264,6 +310,9 @@ p {
   }
 }
 
+/* Styles shared by latest news and deals sections of page */
+
+/* Grid container */
 .news-deals {
   grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
   grid-gap: 10px;
@@ -287,15 +336,21 @@ p {
   font-size: 16px;
 }
 
+.news-deals h3:hover {
+  color: #f42;
+  text-decoration: underline;
+}
+
 .news-deals p {
   font-size: 13px;
   font-weight: 200px;
   color: #aaa;
 }
 
+/* Media queries for latest news and deals sections of page */
 
 @media (min-width: 768px) {
-  .news-deals, 
+  .news-deals,
   .news-deals figure {
     display: grid;
     grid-gap: 15px;
@@ -304,7 +359,9 @@ p {
   }
 
   .latest-news h2,
-  .deals-heading { grid-column: 1 / -1; }
+  .deals-heading {
+    grid-column: 1 / -1;
+  }
 
   .news-deals img {
     width: 100%;
@@ -314,18 +371,24 @@ p {
 }
 
 @media (min-width: 1024px) {
-  .news-deals { margin: 50px 100px; }
+  .news-deals {
+    margin: 50px 100px;
+  }
 }
 
+/* Funding section container */
 .funding {
   margin-bottom: 50px;
 }
 
+/* Funding item */
 .funded {
   position: relative;
   color: #000;
   background-color: rgba(125, 85, 78, 0.08);
 }
+
+/* Funding item children */
 
 .funded img {
   position: absolute;
@@ -337,7 +400,7 @@ p {
 
 .funded-hdr {
   text-align: center;
-  background-color: rgba(255, 68, 34, .08); 
+  background-color: rgba(255, 68, 34, 0.08);
 }
 
 .funded h3 {
@@ -355,7 +418,7 @@ p {
 
 .funding-round {
   padding-bottom: 8px;
-  opacity: .5;
+  opacity: 0.5;
   font-size: 12px;
 }
 
@@ -367,7 +430,7 @@ p {
 }
 
 .funding-deets {
-  border-bottom: .5px solid rgb(255, 68, 34, .3);
+  border-bottom: 0.5px solid rgb(255, 68, 34, 0.3);
 }
 
 .funding-deets .fas {
@@ -376,8 +439,10 @@ p {
 }
 
 .site-credit {
-  opacity: .5;
+  opacity: 0.5;
 }
+
+/* Media queries for funding section */
 
 @media (min-width: 768px) {
   .funding {
@@ -422,37 +487,47 @@ p {
   }
 }
 
+/* Topic section grid container */
 .section-cntnr {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
+/* Topic section grid item and container */
 .topic-grid {
   display: grid;
   grid-template-rows: 3fr 1fr auto;
 }
 
+/* Grid items */
+
 .section1 {
-  background-image: linear-gradient(to bottom, var(--alt-gray), #000), url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/covidvaccine-368x276.jpg");
+  background-image: linear-gradient(to bottom, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/covidvaccine-368x276.jpg");
 }
 
 .section2 {
-  background-image: linear-gradient(to bottom, var(--alt-gray), #000), url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/07/tencent-480x270.jpg");
+  background-image: linear-gradient(to bottom, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/07/tencent-480x270.jpg");
 }
 
 .section3 {
-  background-image: linear-gradient(to bottom, var(--alt-gray), #000), url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/netflix-feat-796x417.png");
+  background-image: linear-gradient(to bottom, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/netflix-feat-796x417.png");
 }
 
 .section4 {
-  background-image: linear-gradient(to bottom, var(--alt-gray), #000), url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/emotion-emoji-gq-368x276.png");;
+  background-image: linear-gradient(to bottom, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/emotion-emoji-gq-368x276.png");
 }
 
 .section5 {
-  background-image: linear-gradient(to bottom, var(--alt-gray), #000), url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/09/Untitled-design-13-368x276.jpg");
+  background-image: linear-gradient(to bottom, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/09/Untitled-design-13-368x276.jpg");
 }
 
 .section6 {
-  background-image: linear-gradient(to bottom, var(--alt-gray), #000), url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/google-logo-podium-368x276.png");
+  background-image: linear-gradient(to bottom, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/google-logo-podium-368x276.png");
 }
 
 .under-story {
@@ -462,7 +537,7 @@ p {
   padding-left: 10px;
   color: #f42;
   font-size: 14px;
-  background-color: rgba(255, 68, 34, .08);
+  background-color: rgba(255, 68, 34, 0.08);
 }
 
 .under-story p {
@@ -480,11 +555,12 @@ p {
   padding: 10px 0 10px 12px;
   list-style: none;
   font-size: 13px;
-  border-bottom: 1px solid rgb(85, 85, 85, .2);
+  border-bottom: 1px solid rgb(85, 85, 85, 0.2);
 }
 
+/* Colorized bullet point for list items */
 .bullet-list li::before {
-  content: "\2022"; 
+  content: "\2022";
   color: #f42;
   font-weight: bold;
   display: inline-block;
@@ -492,6 +568,7 @@ p {
   margin-left: -1em;
 }
 
+/* Deals header */
 .deals-heading {
   display: flex;
   justify-content: space-between;
@@ -503,9 +580,13 @@ p {
   font-size: 15px;
 }
 
+/* Footer */
+
 footer {
   color: #aaa;
 }
+
+/* Top footer */
 
 .ftr-top {
   background-color: #131313;
@@ -540,6 +621,8 @@ footer {
   padding: 20px 0;
 }
 
+/* Bottom footer */
+
 .ftr-btm {
   padding: 40px 0;
   font-size: 12px;
@@ -554,4 +637,18 @@ footer {
 .bold {
   color: #fff;
   font-weight: 700;
+}
+
+/* Person icon */
+.man {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 10;
+  height: 30px;
+  width: 30px;
+  padding: 7px;
+  border-radius: 50%;
+  background-color: #4b84e7;
+  fill: #fff;
 }
