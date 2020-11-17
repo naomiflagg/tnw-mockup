@@ -315,7 +315,7 @@ p {
 
 /* Grid container */
 .news-deals {
-  grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 10px;
   margin: 50px 0;
 }
@@ -491,7 +491,7 @@ p {
 
 /* Topic section grid container */
 .section-cntnr {
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 }
 
 /* Topic section grid item and container */
