@@ -191,6 +191,7 @@ p {
 
 /* Top stories grid container */
 .top-stories,
+.top-stories-right,
 .section-cntnr {
   display: grid;
   grid-gap: 10px;
@@ -381,9 +382,14 @@ p {
   margin-bottom: 50px;
 }
 
+.funding-hdr {
+  color: #f42;
+}
+
 /* Funding item */
 .funded {
   position: relative;
+  margin: 5px 0;
   color: #000;
   background-color: rgba(125, 85, 78, 0.08);
 }
@@ -457,7 +463,6 @@ p {
   .funding-hdr {
     grid-column: 1 / -1;
     grid-row: 1;
-    color: #f42;
   }
 
   .funding-hdr p {
