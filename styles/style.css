@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
@@ -58,10 +65,14 @@ nav {
   top: 0;
   z-index: 10;
   width: 100%;
+  display: -ms-grid;
   display: grid;
-  grid-template-areas: "logo icons";
-  justify-content: space-between;
-  align-content: center;
+      grid-template-areas: "logo icons";
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
   margin-bottom: 80px;
   border-bottom: 0.2px solid rgb(226, 224, 224);
   background-color: #fff;
@@ -70,8 +81,14 @@ nav {
 /* Grid items */
 
 .logo-cntnr {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   grid-area: logo;
   padding-left: 5px;
   width: 100px;
@@ -95,9 +112,15 @@ nav {
 }
 
 .nav-icons {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   justify-self: end;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   grid-area: icons;
   background-color: #fff;
 }
@@ -129,38 +152,78 @@ nav li {
 
 @media (min-width: 768px) {
   nav {
+    -ms-grid-columns: auto 10fr 1fr;
     grid-template-columns: auto 10fr 1fr;
-    grid-template-areas:
+        grid-template-areas:
       "logo top-nav top-nav"
       "logo article-nav icons";
   }
 
   .top-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 
   .top-nav div,
   .article-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     font-weight: 500;
   }
 
   .fa-bars {
     display: none !important;
   }
+  .logo-cntnr {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 1;
+  }
+  .top-nav {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+  }
+  .article-nav {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+  }
+  .nav-icons {
+    -ms-grid-row: 2;
+    -ms-grid-column: 3;
+  }
 }
 
 @media (min-width: 1024px) {
   nav {
-    grid-template-areas:
+        grid-template-areas:
       "top-nav top-nav"
       "article-nav icons" min-content / 3fr 1fr;
   }
 
   .logo-cntnr {
     display: none;
+  }
+  .top-nav {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+  }
+  .article-nav {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+  }
+  .nav-icons {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
   }
 }
 
@@ -193,6 +256,7 @@ p {
 .top-stories,
 .top-stories-right,
 .section-cntnr {
+  display: -ms-grid;
   display: grid;
   grid-gap: 10px;
 }
@@ -205,8 +269,10 @@ p {
 /* Text over image styles for stories throughout page */
 
 .img-txt-container {
+  display: -ms-grid;
   display: grid;
-  align-content: end;
+  -ms-flex-line-pack: end;
+      align-content: end;
   padding: 8px;
   color: #fff;
   background-position: center;
@@ -233,6 +299,10 @@ p {
 
 .top-story-left {
   position: relative;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--alt-gray)), to(#000)),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/china-market-consumers-gq-796x417.png");
+  background-image: -o-linear-gradient(top, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/china-market-consumers-gq-796x417.png");
   background-image: linear-gradient(to bottom, var(--alt-gray), #000),
     url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/china-market-consumers-gq-796x417.png");
 }
@@ -242,6 +312,19 @@ p {
   position: absolute;
   width: 100%;
   height: 100%;
+  background-image: -webkit-gradient(
+    linear,
+    left top, right bottom,
+    color-stop(20%, rgba(248, 62, 78, 0.45)),
+    color-stop(60%, rgba(255, 67, 10, 0.45)),
+    to(transparent)
+  );
+  background-image: -o-linear-gradient(
+    left top,
+    rgba(248, 62, 78, 0.45) 20%,
+    rgba(255, 67, 10, 0.45) 60%,
+    transparent
+  );
   background-image: linear-gradient(
     to right bottom,
     rgba(248, 62, 78, 0.45) 20%,
@@ -266,12 +349,20 @@ p {
 
 /* Featured story on top right */
 .top-story-top {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--alt-gray)), to(#000)),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/netflix-feat-796x417.png");
+  background-image: -o-linear-gradient(top, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/netflix-feat-796x417.png");
   background-image: linear-gradient(to bottom, var(--alt-gray), #000),
     url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/netflix-feat-796x417.png");
 }
 
 /* Featured story on bottom right */
 .top-story-btm {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--alt-gray)), to(#000)),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/Untitled-design-2020-11-11T104744.768-796x417.png");
+  background-image: -o-linear-gradient(top, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/Untitled-design-2020-11-11T104744.768-796x417.png");
   background-image: linear-gradient(to bottom, var(--alt-gray), #000),
     url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/Untitled-design-2020-11-11T104744.768-796x417.png");
 }
@@ -280,6 +371,7 @@ p {
 
 @media (min-width: 768px) {
   .top-stories {
+    -ms-grid-columns: 2fr 10px 1fr;
     grid-template-columns: 2fr 1fr;
   }
 
@@ -302,8 +394,12 @@ p {
   }
 
   .logo-and-date {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 
   .gradient {
@@ -321,12 +417,15 @@ p {
 }
 
 .news-deals figure {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: 15px 0;
 }
 
 .news-deals img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   height: 75px;
   width: 75px;
   padding-right: 10px;
@@ -353,10 +452,14 @@ p {
 @media (min-width: 768px) {
   .news-deals,
   .news-deals figure {
+    display: -ms-grid;
     display: grid;
     grid-gap: 15px;
-    justify-content: space-between;
-    align-content: start;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-line-pack: start;
+        align-content: start;
   }
 
   .latest-news h2,
@@ -452,6 +555,7 @@ p {
 
 @media (min-width: 768px) {
   .funding {
+    display: -ms-grid;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 10px;
@@ -459,6 +563,7 @@ p {
 
   .funding-hdr {
     grid-column: 1 / -1;
+    -ms-grid-row: 1;
     grid-row: 1;
   }
 
@@ -478,13 +583,18 @@ p {
 @media (min-width: 1024px) {
   .funding-hdr {
     grid-column: 1 / -1;
+    display: -ms-grid;
     display: grid;
+    -ms-grid-columns: 1fr auto auto auto;
     grid-template-columns: 1fr auto auto auto;
   }
 
   .funding-hdr p {
-    justify-self: end;
-    align-self: center;
+    -ms-grid-column-align: end;
+        justify-self: end;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
     margin: 0;
   }
 }
@@ -496,46 +606,77 @@ p {
 
 /* Topic section grid item and container */
 .topic-grid {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-rows: 3fr 1fr auto;
   grid-template-rows: 3fr 1fr auto;
 }
 
 /* Grid items */
 
 .section1 {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--alt-gray)), to(#000)),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/covidvaccine-368x276.jpg");
+  background-image: -o-linear-gradient(top, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/covidvaccine-368x276.jpg");
   background-image: linear-gradient(to bottom, var(--alt-gray), #000),
     url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/covidvaccine-368x276.jpg");
 }
 
 .section2 {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--alt-gray)), to(#000)),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/07/tencent-480x270.jpg");
+  background-image: -o-linear-gradient(top, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/07/tencent-480x270.jpg");
   background-image: linear-gradient(to bottom, var(--alt-gray), #000),
     url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/07/tencent-480x270.jpg");
 }
 
 .section3 {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--alt-gray)), to(#000)),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/netflix-feat-796x417.png");
+  background-image: -o-linear-gradient(top, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/netflix-feat-796x417.png");
   background-image: linear-gradient(to bottom, var(--alt-gray), #000),
     url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/netflix-feat-796x417.png");
 }
 
 .section4 {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--alt-gray)), to(#000)),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/emotion-emoji-gq-368x276.png");
+  background-image: -o-linear-gradient(top, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/emotion-emoji-gq-368x276.png");
   background-image: linear-gradient(to bottom, var(--alt-gray), #000),
     url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/11/emotion-emoji-gq-368x276.png");
 }
 
 .section5 {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--alt-gray)), to(#000)),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/09/Untitled-design-13-368x276.jpg");
+  background-image: -o-linear-gradient(top, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/09/Untitled-design-13-368x276.jpg");
   background-image: linear-gradient(to bottom, var(--alt-gray), #000),
     url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/09/Untitled-design-13-368x276.jpg");
 }
 
 .section6 {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--alt-gray)), to(#000)),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/google-logo-podium-368x276.png");
+  background-image: -o-linear-gradient(top, var(--alt-gray), #000),
+    url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/google-logo-podium-368x276.png");
   background-image: linear-gradient(to bottom, var(--alt-gray), #000),
     url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/10/google-logo-podium-368x276.png");
 }
 
 .under-story {
+  display: -ms-grid;
   display: grid;
-  column-gap: 10px;
-  grid-template: 30px 66px / 4fr 1fr;
+  -webkit-column-gap: 10px;
+     -moz-column-gap: 10px;
+          column-gap: 10px;
+  -ms-grid-rows: 30px 66px;
+  -ms-grid-columns: 4fr 10px 1fr;
+      grid-template: 30px 66px / 4fr 1fr;
   padding-left: 10px;
   color: #f42;
   font-size: 14px;
@@ -543,14 +684,18 @@ p {
 }
 
 .under-story p {
-  align-self: end;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
 }
 
 .under-story img {
-  justify-self: end;
+  -ms-grid-column-align: end;
+      justify-self: end;
   width: 96px;
   height: 96px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .bullet-list li {
@@ -572,9 +717,15 @@ p {
 
 /* Deals header */
 .deals-heading {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .deals-heading p {
@@ -595,8 +746,12 @@ footer {
 }
 
 .ftr-top ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .ftr-top li {
